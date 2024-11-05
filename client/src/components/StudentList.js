@@ -3,15 +3,23 @@ import { getStudents } from '../services/studentService';
 
 const StudentList = () => {
   const [students, setStudents] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
-      const result = await getStudents();
-      setStudents(result.data);
-    }
-    fetchData();
+      const fetchData = async () => {
+          try {
+              const data = await getStudents();
+              setStudents(data);
+          } catch (error) {
+              setError('Failed to fetch student data');
+          }
+      };
+      fetchData();
   }, []);
 
+  if (error) {
+      return <p>{error}</p>; // Show error message in the UI
+  }
   return (
     <div>
       <h2>Student List</h2>

@@ -1,11 +1,8 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:5000/api/students';
-
-export const getStudents = async () => {
-    return await axios.get(baseURL);
-};
-
+const apiClient = axios.create({
+    baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api',
+});
 
 const registerStudent = async (studentData) => {
     try {
@@ -21,4 +18,12 @@ const studentService = {
 };
 
 
-export default studentService;
+export const getStudents = async () => {
+    try {
+        const response = await apiClient.get('/students');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching students:', error.message);
+        throw error; // Rethrow the error so it can be caught in the component
+    }
+};
