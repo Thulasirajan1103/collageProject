@@ -19,10 +19,9 @@ app.use('/api/attendance', attendanceRoutes);
 
 
 
-mongoose.connect('mongodb://localhost:27017/attendance', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log('MongoDB connected'));
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Database connected'))
+  .catch(error => console.error('Database connection error:', error));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
