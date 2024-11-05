@@ -8,6 +8,6 @@ router.get('/', async (req, res) => {
   const students = await Student.find();
   res.json(students);
 });
-router.post('/register', registerStudent);
+router.post('/register', studentController.registerStudent); // Check this path and handler
 
 module.exports = router;

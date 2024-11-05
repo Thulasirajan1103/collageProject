@@ -23,6 +23,7 @@ const StudentRegistrationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('Submitting data:', studentData);
         try {
             const response = await axios.post('/api/students/register', studentData);
             console.log('Student registered successfully:', response.data);
