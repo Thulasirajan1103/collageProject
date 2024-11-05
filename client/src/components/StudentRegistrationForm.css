@@ -1,0 +1,47 @@
+/* client/src/components/StudentRegistrationForm.css */
+
+.registration-container {
+    max-width: 400px; /* Set a max width for the form */
+    margin: 50px auto; /* Center the form */
+    padding: 20px; /* Add some padding */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center; /* Center text */
+    background-color: #f9f9f9; /* Light background color */
+}
+
+.logo {
+    width: 100px; /* Adjust width as needed */
+    margin-bottom: 20px; /* Space below logo */
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column; /* Stack inputs vertically */
+}
+
+.registration-form input {
+    margin-bottom: 10px; /* Space between inputs */
+    padding: 10px; /* Padding inside inputs */
+    border: 1px solid #ccc; /* Light border for inputs */
+    border-radius: 5px; /* Slightly rounded inputs */
+}
+
+.registration-form button {
+    padding: 10px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.registration-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.error-message {
+    color: red; /* Error message color */
+    margin-top: 10px; /* Space above error message */
+}
