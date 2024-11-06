@@ -8,7 +8,6 @@ const {
 } = require('../controllers/attendanceController');
 
 // Define routes
-router.post('/register', studentController.registerStudent); // Check this path and handler
 
 // Route to mark attendance
 router.post('/mark', markAttendance);

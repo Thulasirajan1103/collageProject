@@ -1,13 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const Student = require('../models/Student');
-const { registerStudent } = require('../controllers/studentController');
+const { registerStudent } = require('../controllers/studentController'); // Import registerStudent directly
 
 // Get all students
 router.get('/', async (req, res) => {
-  const students = await Student.find();
-  res.json(students);
+  try {
+    const students = await Student.find();
+    res.json(students);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch students' });
+  }
 });
-router.post('/register', studentController.registerStudent); // Check this path and handler
+
+// Register a new student
+router.post('/register', registerStudent); // Use registerStudent directly
 
 module.exports = router;

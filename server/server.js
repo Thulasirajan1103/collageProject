@@ -4,26 +4,22 @@ const cors = require('cors');
 
 const studentRoutes = require('./routes/studentRoutes');
 const attendanceRoutes = require('./routes/attendanceRoutes');
-
 const connectDB = require('./config');
-connectDB();
-
 
 const app = express();
 
-const cors = require('cors');
-app.use(cors());
-app.use(express.json());
+// Connect to the database
+connectDB();
 
+// Middleware
+app.use(cors()); // Apply CORS middleware once
+app.use(express.json()); // Parse incoming JSON data
+
+// Routes
 app.use('/api/students', studentRoutes);
 app.use('/api/attendance', attendanceRoutes);
 
-
-
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Database connected'))
-  .catch(error => console.error('Database connection error:', error));
-
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
