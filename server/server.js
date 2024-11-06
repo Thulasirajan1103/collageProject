@@ -5,6 +5,7 @@ const cors = require('cors');
 const studentRoutes = require('./routes/studentRoutes');
 const attendanceRoutes = require('./routes/attendanceRoutes');
 const connectDB = require('./config');
+const reportRoutes = require('./routes/reportRoutes');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.json()); // Parse incoming JSON data
 // Routes
 app.use('/api/students', studentRoutes);
 app.use('/api/attendance', attendanceRoutes);
+app.use('/api/reports', reportRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
